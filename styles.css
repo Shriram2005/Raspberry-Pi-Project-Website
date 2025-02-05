@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+#controls {
+    text-align: center;
+}
+
+#controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#results {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#dataList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#dataList li {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: white;
+}
+
+#dataList img {
+    max-width: 100%;
+    height: auto;
+}
+
+#loading, #error {
+    text-align: center;
+    margin-top: 20px;
+    color: red;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Aid for Visually Impaired</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Smart Aid for Visually Impaired</h1>
+    </header>
+    <main>
+        <section id="controls">
+            <button id="fetchData">Fetch Data</button>
+        </section>
+        <section id="results">
+            <div id="loading">Loading...</div>
+            <div id="error"></div>
+            <ul id="dataList"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Smart Aid Team</p>
+    </footer>
+</body>
+</html>
