@@ -1,53 +1,134 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #45a049;
+    --background-color: #f4f4f4;
+    --card-background: #ffffff;
+    --text-color: #333333;
+    --border-color: #dddddd;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+    --primary-color: #66bb6a;
+    --secondary-color: #81c784;
+    --background-color: #1a1a1a;
+    --card-background: #2d2d2d;
+    --text-color: #ffffff;
+    --border-color: #404040;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
     padding: 1em 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+.theme-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2em;
 }
 
 main {
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-section {
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+
+.filter-container {
+    display: flex;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-#controls {
-    text-align: center;
-}
-
-#controls button {
+select, button {
     padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-#results {
-    max-width: 800px;
-    margin: 0 auto;
+select {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.primary-button {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.primary-button:hover {
+    background-color: var(--secondary-color);
 }
 
 #dataList {
     list-style-type: none;
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 #dataList li {
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    background-color: var(--card-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+#dataList li:hover {
+    transform: translateY(-5px);
 }
 
 #dataList img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
     max-width: 100%;
     height: auto;
 }
