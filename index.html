@@ -3,56 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Aid - A tool for visually impaired individuals to read and understand text through image capture and multi-language translation">
     <title>Smart Aid for Visually Impaired</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script type="module" src="app.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1><i class="fas fa-eye-low-vision"></i> Smart Aid for Visually Impaired</h1>
-        <nav>
-            <button id="toggleTheme" class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </button>
-        </nav>
-    </header>
-    <main>
-        <section id="controls">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search captured text...">
-                <button id="searchButton"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="filter-container">
-                <select id="languageFilter">
-                    <option value="all">All Languages</option>
-                    <option value="english">English</option>
-                    <option value="hindi">Hindi</option>
-                    <option value="marathi">Marathi</option>
-                </select>
-                <button id="fetchData" class="primary-button">
-                    <i class="fas fa-sync-alt"></i> Refresh Data
+    <header role="banner">
+        <div class="header-content">
+            <h1>
+                <i class="fas fa-eye-low-vision" aria-hidden="true"></i>
+                Smart Aid for Visually Impaired
+            </h1>
+            <div class="header-controls">
+                <button id="toggleTheme" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                <button id="speakPage" class="theme-toggle" aria-label="Read page content">
+                    <i class="fas fa-headphones" aria-hidden="true"></i>
                 </button>
             </div>
+        </div>
+    </header>
+
+    <aside class="accessibility-controls" aria-label="Accessibility controls">
+        <button id="increaseFontSize" aria-label="Increase font size" class="btn">
+            <i class="fas fa-plus" aria-hidden="true"></i> A+
+        </button>
+        <button id="decreaseFontSize" aria-label="Decrease font size" class="btn">
+            <i class="fas fa-minus" aria-hidden="true"></i> A-
+        </button>
+        <button id="toggleHighContrast" aria-label="Toggle high contrast" class="btn">
+            <i class="fas fa-adjust" aria-hidden="true"></i>
+        </button>
+        <button id="readAloud" aria-label="Read page aloud" class="btn">
+            <i class="fas fa-volume-up" aria-hidden="true"></i>
+        </button>
+    </aside>
+
+    <main id="main-content" role="main">
+        <section id="controls" class="controls-section" aria-label="Search and filter controls">
+            <div class="controls-header">
+                <i class="fas fa-sliders-h" aria-hidden="true"></i>
+                <h2>Search & Filters</h2>
+            </div>
+            
+            <div class="controls-content">
+                <div class="search-container">
+                    <label for="searchInput" class="visually-hidden">Search captured text</label>
+                    <div class="search-input-wrapper">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search captured text..."
+                            aria-label="Search captured text"
+                        >
+                        <button id="searchButton" class="btn btn-primary" aria-label="Search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                            <span>Search</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="filter-container">
+                    <div class="filter-group">
+                        <label for="languageFilter">
+                            <i class="fas fa-language" aria-hidden="true"></i>
+                            Select Language
+                        </label>
+                        <select id="languageFilter" aria-label="Filter by language">
+                            <option value="all">All Languages</option>
+                            <option value="english">English</option>
+                            <option value="hindi">Hindi</option>
+                            <option value="marathi">Marathi</option>
+                        </select>
+                    </div>
+                    
+                    <div class="refresh-container">
+                        <button id="fetchData" class="btn btn-primary" aria-label="Refresh data">
+                            <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                            <span>Refresh Data</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="results">
-            <div id="loading" class="loading-spinner">
+
+        <section id="results" aria-live="polite">
+            <div id="loading" class="loading-spinner" role="status" aria-hidden="true">
                 <i class="fas fa-spinner fa-spin"></i> Loading...
             </div>
-            <div id="error"></div>
-            <ul id="dataList"></ul>
+            <div id="error" role="alert"></div>
+            <ul id="dataList" class="card-grid" role="list"></ul>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Smart Aid Team | <a href="#" id="aboutLink">About</a></p>
+
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Smart Aid</h3>
+                <p>Smart Aid is a revolutionary tool designed to assist visually impaired individuals in reading and understanding text through advanced technology.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="#" id="aboutLink"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="#" id="privacyLink"><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+                        <li><a href="#" id="helpLink"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+                        <li><a href="#" id="contactLink"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p>Email: support@smartaid.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Smart Aid Team. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!-- Modal for About section -->
-    <div id="aboutModal" class="modal">
+    <!-- Modals -->
+    <div id="aboutModal" class="modal" role="dialog" aria-labelledby="aboutTitle">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>About Smart Aid</h2>
+            <button class="close" aria-label="Close modal">&times;</button>
+            <h2 id="aboutTitle">About Smart Aid</h2>
             <p>Smart Aid is a revolutionary tool designed to assist visually impaired individuals in reading and understanding text through image capture and multi-language translation.</p>
+            <div class="features-list">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Real-time text recognition from images</li>
+                    <li>Multi-language translation support</li>
+                    <li>Text-to-speech functionality</li>
+                    <li>High contrast modes for better visibility</li>
+                    <li>Keyboard navigation support</li>
+                    <li>Screen reader optimization</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="helpModal" class="modal" role="dialog" aria-labelledby="helpTitle">
+        <div class="modal-content">
+            <button class="close" aria-label="Close modal">&times;</button>
+            <h2 id="helpTitle">Help & Support</h2>
+            <div class="help-content">
+                <h3>Keyboard Shortcuts:</h3>
+                <ul>
+                    <li><kbd>Alt + S</kbd> - Focus search box</li>
+                    <li><kbd>Alt + R</kbd> - Refresh data</li>
+                    <li><kbd>Alt + T</kbd> - Toggle theme</li>
+                    <li><kbd>Alt + A</kbd> - Toggle accessibility panel</li>
+                </ul>
+                <h3>Need More Help?</h3>
+                <p>Contact our support team at support@smartaid.com</p>
+            </div>
         </div>
     </div>
 </body>
